@@ -25,7 +25,6 @@ Setup ANDROID_HOME and ANDROID_SDK_ROOT
 •
 . Extend PATH to have platform-tools, emulator, cmdllne-tools/tool/bin
 
-. Install Packages for AVD (system.images, platforms, build.tools)
 
 7. Install Packages for AVD (system.images, platforms, build.tools)
 
