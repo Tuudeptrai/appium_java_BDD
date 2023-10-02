@@ -1,46 +1,83 @@
-# appium-cucumberbdd
-Appium mobile test automation framework with Page Object Model design using Java + Cucumber + Maven + JUnit.
-Framework follows many of the industry best practices and supports Android and iOS in a single code base.
+1. install Java and setup JAVA_HOME
+   C:\Program Files\Java\jdk-21
+2. install Nodejs
+   C:\Program Files\nodejs paste in path env
+3. dowload appium 1.20.2
+npm i appium@latest -g
+4. Download and setup Android SDK command line tools ONLY
+ ![img.png](img.png)
+create tools folder then copy bin and lib into tools
+![img_1.png](img_1.png)
+create android and sdk folder in C:\users\«urrent-username>\AppData\Local\Android\sdk
+![img_2.png](img_2.png)
+Setup ANDROID_HOME and ANDROID_SDK_ROOT
+   C:\Users\vuvan\AppData\Local\Android\sdk
+![img_3.png](img_3.png)
 
-**Step by step instructions to build this framework from scratch is in this Highest Rated Udemy course.
-Enroll today at the minimal rate of INR 570/ $12.99.
-Link with coupon code: https://www.udemy.com/course/the-complete-appium-course-for-ios-and-android/?couponCode=DEC021**
+5.setup path
 
-![One of the most comprehensive Appium course ever created](/CourseLandingPage.PNG)
+![img_4.png](img_4.png)
 
-Technologies/Tools used in building the framework
-=================================================
-- IntelliJ - IDE
-- Appium - Mobile Automation library
-- Maven - Build automation tool
-- Java - Programming language
-- Cucumber - BDD
-- Gherkin - DSL
-- JUnit - Unit testing framework
-- Log4J - Logging framework
-- Extent Reports - Reporting framework
-- JSON - Test Data
-- XML - Static text
-- GitHub - Version control
-- Jenkins - CI/CD
+6.sdkmanager platform-tools emulator
 
-Framework implements below best practices
-=========================================
-- Code reusability
-- Code readability
-- Scalable automation (demonstrated using multiple test classes)
-- Uses explicit waits
-- Abstraction layer for UI commands like click, sendkeys, etc.
-- Parameterization using TestNG XML and config.properties
-- Abstraction layer for test data
-- Abstraction layer for static text
-- Supports iOS and Android
-- Demonstrates how to define UI elements that are common across pages (e.g. menu bar, side bar, etc.)
-- How to recover from test failure/ how to write fail safe test cases
-- Scrolling for both Android and iOS (using touchaction, uiScrollable, mobile:scroll)
-- Demonstrates how to effectively capture Screenshots/Videos
-- Supports parallel execution using JUnit
-- Supports parallel execution on multiple real Android and iOS devices
-- Start Appium server propgrammatically
-- Supports Cucumber-HTML-Reporter plugin
-- Integrated with Log4J2 Logging framework
+-> After this step we will see platform-tools and emulator folder under same location with cmdline-tools at  
+-> Check adb command to make sure
+•
+. Extend PATH to have platform-tools, emulator, cmdllne-tools/tool/bin
+
+. Install Packages for AVD (system.images, platforms, build.tools)
+
+7. Install Packages for AVD (system.images, platforms, build.tools)
+
+• sdkmanager --list
+
+• sdkmanager "platforms; android-29" (https://developer.android.com/studio/releases/platforms)
+
+• sdkmanager "system-images;android-29;default;x86"
+
+• sdkmanager "build-tools;29.0.2" (https://developer.android.com/studio/releases/build-tools)
+
+8. Create AVD
+
+• avdmanager create avd --name android_29 --package "system-images;android-29;default;x86"
+
+9. json config appium
+
+{
+    "platformName": "Android",
+
+    "deviceName": "android_29",
+
+    "app": "C:\\Users\\vuvan\\OneDrive\\Desktop\\java\\appium-cucumberbdd-2.0\\src\\test\\resources\\apps\\Android.SauceLabs.Mobile.Sample.app.2.7.1.apk",
+   
+    "automationName": "UiAutomator2",
+       
+    "appPackage": "com.swaglabsmobileapp",
+       
+    "appWaitActivity": "com.swaglabsmobileapp.MainActivity"
+}
+10. Launch Emulator by using commandline tools
+
+    emulator @android_29
+
+11. AppiumSession
+
+a. Mở cmd trong folder chứa apk
+
+b. Lấy tên device: adb devices
+
+    name: emulator-5554
+
+c. Cài ứng dụng lên máy: adb install Android.SauceLabs.Mobile.Sample.app.2.7.1.apk
+
+d. Lấy thông tin ứng dụng: Mở app -> login app -> adb shell "dumpsys window | grep mCurrentFocus"
+   appPackage:
+   appWaitActivity:
+
+12. dowload maven and unzip
+ put path C:\Users\vuvan\Downloads\apache-maven-3.9.4-bin\apache-maven-3.9.4\bin
+
+13. run project
+
+    mvn test -Dos=android
+14.
