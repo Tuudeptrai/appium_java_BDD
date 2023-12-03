@@ -19,7 +19,7 @@ Setup ANDROID_HOME and ANDROID_SDK_ROOT
 ![img_4.png](img_4.png)
 
 6.sdkmanager platform-tools emulator
-
+sdkmanager --sdk_root=<path_to_sdk_root> platform-tools emulator
 -> After this step we will see platform-tools and emulator folder under same location with cmdline-tools at  
 -> Check adb command to make sure
 •
